@@ -16,38 +16,39 @@
 body {
   min-height: 100vh;
   background: #000;
-  color: #d9ffe8;
+  color: #e6fff3;
   display: flex;
   justify-content: center;
-  padding: 20px 0;
+  align-items: center;
 }
 
 .container {
-  background: rgba(0,0,0,0.85);
-  padding: 24px;
-  border-radius: 12px;
   width: 92%;
   max-width: 420px;
-  box-shadow: 0 0 25px rgba(0,255,120,0.25);
+  background: rgba(0, 0, 0, 0.9);
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 0 28px rgba(0,255,140,0.25);
 }
 
 .log {
   font-size: 0.95rem;
-  line-height: 1.55;
+  line-height: 1.6;
   white-space: pre-line;
 }
 
 .cursor {
   display: inline-block;
   width: 8px;
+  height: 1.1em;
   background: #00ff88;
   margin-left: 4px;
   animation: blink 1s infinite;
 }
 
 @keyframes blink {
-  0%,50% { opacity: 1; }
-  51%,100% { opacity: 0; }
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
 </style>
 </head>
@@ -55,8 +56,7 @@ body {
 <body>
 
 <div class="container">
-  <div id="log" class="log"></div>
-  <span class="cursor"></span>
+  <div id="log" class="log"></div><span class="cursor"></span>
 </div>
 
 <script>
@@ -68,6 +68,7 @@ function horaAtual() {
   });
 }
 
+// contador local (simula reconhecimento)
 let visitas = localStorage.getItem("stalkerCount");
 let count = visitas ? parseInt(visitas) + 1 : 1;
 localStorage.setItem("stalkerCount", count);
@@ -86,14 +87,12 @@ Plataforma: compatível
 Horário local: ${horaAtual()}
 
 Localização: ***************
-Acesso restrito
+Nível de acesso: restrito
 
 Endereço IP: ***.***.**.**
 Permissão não concedida
 
-Análise comportamental: ativa
-Monitoramento contínuo
-
+Monitoramento ativo
 Sessão nº ${count}
 `;
 } else {
@@ -119,14 +118,4 @@ let i = 0;
 
 function digitar() {
   if (i < texto.length) {
-    log.innerText += texto.charAt(i);
-    i++;
-    setTimeout(digitar, 22); // velocidade da digitação
-  }
-}
-
-setTimeout(digitar, 600); // pequeno delay inicial
-</script>
-
-</body>
-</html>
+    const c =
