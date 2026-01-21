@@ -16,32 +16,33 @@
 
 body {
   min-height: 100vh;
-  background: url("fundo.jpg") no-repeat center center fixed;
-  background-size: contain;
-  background-color: #000;
+  background: #000;
   color: #e6fff3;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.35);
-  z-index: 0;
+.header {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 10px;
+}
+
+.header img {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
 }
 
 .container {
-  position: relative;
-  z-index: 1;
   width: 94%;
-  max-width: 420px;
+  max-width: 480px;
   background: rgba(0,0,0,0.88);
-  padding: 22px;
+  margin-top: 12px;
+  padding: 20px;
   border-radius: 14px;
   box-shadow: 0 0 30px rgba(0,255,140,0.35);
-  backdrop-filter: blur(4px);
 }
 
 .log {
@@ -68,7 +69,9 @@ body {
 
 <body>
 
-<div class="overlay"></div>
+<div class="header">
+  <img src="fundo.jpg" alt="Sistema Coesta">
+</div>
 
 <div class="container">
   <div class="log" id="log"></div>
@@ -94,13 +97,13 @@ let lines;
 if (sessionCount === 1) {
   lines = [
     "Iniciando rastreamento...",
-    "Conexao estabelecida ✔",
+    "Conexão estabelecida ✔",
     "Stalker detectado",
     "",
     "Dispositivo: Smartphone",
-    "Horario: " + time,
-    "Localizacao: ********",
-    "Endereco IP: ********",
+    "Horário: " + time,
+    "Localização: ********",
+    "Endereço IP: ********",
     "Monitoramento ativo",
     "Screenshot cam: realizado com sucesso",
     "",
@@ -108,19 +111,19 @@ if (sessionCount === 1) {
   ];
 } else {
   lines = [
-    "Sistema reconheceu voce",
+    "O sistema reconheceu você.",
     "Acesso repetido detectado ✔",
     "",
-    ">>> VOCE ESTA DE VOLTA <<<",
+    ">>> VOCÊ ESTÁ DE VOLTA. <<<",
     "",
-    "Sessao anterior confirmada",
-    "Monitoramento ja em execucao",
+    "Sessão anterior confirmada",
+    "Monitoramento já em execução",
     "",
     "Dispositivo: Smartphone",
-    "Horario atualizado: " + time,
+    "Horário atualizado:: " + time,
     "",
-    "Observacao continua",
-    "Sessao nº " + sessionCount
+    "Observação continua",
+    "Sessão nº " + sessionCount
   ];
 }
 
